@@ -24,7 +24,7 @@ public class MainController {
 		if(delMese.size()!=0)
 			model.addAttribute("opere",delMese);
 		
-		return "/index";
+		return "index.html";
 	}
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)

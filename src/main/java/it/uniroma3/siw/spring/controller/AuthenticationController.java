@@ -69,7 +69,7 @@ public class AuthenticationController {
 			return "/admin/home.html";
 		}
 		
-		return "/";//cambiato questo, era index.html
+		return "/index.html";
 		
 	}
 	

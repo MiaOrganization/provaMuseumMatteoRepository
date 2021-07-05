@@ -66,7 +66,7 @@ public class AuthenticationController {
 		if(opereMese.size()!=0)
 			model.addAttribute("opere",opereMese);
 		if(credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-			return "/admin/home.html";
+			return "admin/home.html";
 		}
 		
 		return "index.html";

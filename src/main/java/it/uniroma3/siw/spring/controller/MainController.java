@@ -16,7 +16,7 @@ public class MainController {
 	@Autowired 
 	public OperaService operaService;
 	
-	@RequestMapping(value = {"/"/*, "/index"*/}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
 	public String index(Model model) {
 		
 		List<Opera> delMese = this.operaService.opereDelMese();

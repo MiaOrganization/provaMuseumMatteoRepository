@@ -41,7 +41,7 @@ public class CollezioneController {
 		logger.debug("addCollezione");
 		model.addAttribute("collezione", new Collezione());
 		model.addAttribute("curatori", this.curatoreService.tutti());
-		return "/admin/collezione/collezioneForm.html";
+		return "admin/collezione/collezioneForm.html";
 		
 	}
 	
@@ -64,7 +64,7 @@ public class CollezioneController {
 	@RequestMapping(value = "/admin/collezioni", method = RequestMethod.GET)
 	public String getCollezioniAdmin(Model model) {
 		model.addAttribute("collezioni", this.collezioneService.tutti());
-		return "/admin/collezione/collezioniTable.html";
+		return "admin/collezione/collezioniTable.html";
 		
 	}
 	
@@ -72,7 +72,7 @@ public class CollezioneController {
 	public String rimuoviCollezione (Model model) {
 		
 		model.addAttribute("collezioni", this.collezioneService.tutti());
-		return "/admin/collezione/rimuoviCollezioneForm.html";
+		return "admin/collezione/rimuoviCollezioneForm.html";
 		
 	}
 	
@@ -83,12 +83,12 @@ public class CollezioneController {
 		
 		if(v) {
 			model.addAttribute("collezioni", this.collezioneService.tutti());
-			return "/admin/collezione/collezioniTable.html";
+			return "admin/collezione/collezioniTable.html";
 		}
-		return "/admin/collezione/rimuoviCollezioneForm.html";
+		return "admin/collezione/rimuoviCollezioneForm.html";
 	}
 	
-	@RequestMapping(value = "/admin/collezione", method = RequestMethod.POST)
+	@RequestMapping(value = "admin/collezione", method = RequestMethod.POST)
 	public String newCollezione(@ModelAttribute("collezione") Collezione collezione, @RequestParam("curator") String curatore,
 									Model model, BindingResult bindingResult) {
 		
@@ -101,11 +101,11 @@ public class CollezioneController {
 			collezione.setCuratore(this.curatoreService.curatorePerMatricola(s[0]).get(0));
 			this.collezioneService.inserisci(collezione);
 			model.addAttribute("collezioni", this.collezioneService.tutti());
-			return "/admin/collezione/collezioniTable.html";
+			return "admin/collezione/collezioniTable.html";
 			
 		}
 
-		return "/admin/collezione/collezioneForm.html";
+		return "admin/collezione/collezioneForm.html";
 		
 	}
 

@@ -44,7 +44,7 @@ public class OperaController {
 		model.addAttribute("opera", new Opera());
 		model.addAttribute("artisti", this.artistaService.tutti());
 		model.addAttribute("collezioni", this.collezioneService.tutti());
-		return "/admin/opera/operaForm.html";
+		return "admin/opera/operaForm.html";
 		
 	}
 	
@@ -67,18 +67,18 @@ public class OperaController {
 	public String getOpereAdmin(Model model) {
 
 		model.addAttribute("opere", this.operaService.tutti());
-		return "/admin/opera/opereTable.html";
+		return "admin/opera/opereTable.html";
 		
 	}
 	
 	@RequestMapping(value = "/admin/opera", method = RequestMethod.GET)
 	public String opereDelMese(Model model) {
-		return "/admin/opera/opereDelMeseForm.html";
+		return "admin/opera/opereDelMeseForm.html";
 	}
 	
 	@RequestMapping(value = "/admin/rimuoviOpera" , method = RequestMethod.GET)
 	public String rimuoviOpera(Model model) {
-		return "/admin/opera/rimuoviOperaForm.html";
+		return "admin/opera/rimuoviOperaForm.html";
 	}
 	
 	@RequestMapping(value = "/admin/cancellaOpera" , method = RequestMethod.POST)
@@ -88,7 +88,7 @@ public class OperaController {
 			model.addAttribute("opere",this.operaService.tutti());
 			return "opere.html";
 		}
-	 return "/admin/opera/rimuoviOperaForm.html";
+	 return "admin/opera/rimuoviOperaForm.html";
 	}
 	
 	
@@ -105,7 +105,7 @@ public class OperaController {
 			model.addAttribute("opere", this.operaService.tutti());
 			return "opere.html";
 		}
-		return "/admin/opera/operaForm.html";
+		return "admin/opera/operaForm.html";
 	}
 	
 	/* Metodi per le opere del mese */
@@ -119,17 +119,17 @@ public class OperaController {
 			
 			this.operaService.updateOperaDelMese(operaTrovata.get(0),true);
 			model.addAttribute("opere",this.operaService.opereDelMese());
-			return "/admin/opera/successMese.html";
+			return "admin/opera/successMese.html";
 			
 		}
 		
-		return "/admin/opera/opereDelMeseForm.html";
+		return "admin/opera/opereDelMeseForm.html";
 		
 	}
 	
 	@RequestMapping(value = "/admin/operaMeseRemove", method = RequestMethod.GET)
 	public String rimuoviOperaDelMese(Model model) {
-		return "/admin/opera/rimuoviOperaDelMeseForm.html";
+		return "admin/opera/rimuoviOperaDelMeseForm.html";
 	}
 	
 	@RequestMapping(value = "/admin/cancellaOperaDelMese", method = RequestMethod.GET)
@@ -141,10 +141,10 @@ public class OperaController {
 			
 			this.operaService.updateOperaDelMese(operaTrovata.get(0),false);
 			model.addAttribute("opere",this.operaService.opereDelMese());
-			return "/index.html";
+			return "index.html";
 			
 		}
-		return "/admin/opera/rimuoviOperaDelMeseForm.html";
+		return "admin/opera/rimuoviOperaDelMeseForm.html";
 	}
 	
 }

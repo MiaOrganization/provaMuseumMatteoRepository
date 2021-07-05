@@ -37,7 +37,7 @@ public class ArtistaController {
 		
 			logger.debug("addArtista");
 			model.addAttribute("artista", new Artista());
-			return "/admin/artista/artistaForm.html";
+			return "admin/artista/artistaForm.html";
 			
 	}
 	
@@ -62,14 +62,14 @@ public class ArtistaController {
 	public String getArtistiAdmin(Model model) {
 		
 		model.addAttribute("artisti", this.artistaService.tutti());
-		return "/admin/artista/artistiTable.html";
+		return "admin/artista/artistiTable.html";
 		
 	}
 	
 	@RequestMapping(value = "/admin/rimuoviArtista" , method = RequestMethod.GET)
 	public String rimuoviArtista(Model model) {
 		model.addAttribute("artisti", this.artistaService.tutti());
-		return "/admin/artista/rimuoviArtistaForm.html";
+		return "admin/artista/rimuoviArtistaForm.html";
 	}
 	
 	@RequestMapping(value = "/admin/cancellaArtista" , method = RequestMethod.POST)
@@ -80,9 +80,9 @@ public class ArtistaController {
 		Boolean v = this.artistaService.eliminaArtista(s[0],s[1]);
 		if(v) {
 			model.addAttribute("artisti",this.artistaService.tutti());
-			return "/admin/artista/artistiTable.html";
+			return "admin/artista/artistiTable.html";
 		}
-		return "/admin/artista/rimuoviArtistaForm.html";
+		return "admin/artista/rimuoviArtistaForm.html";
 	}
 	
 	
@@ -93,10 +93,10 @@ public class ArtistaController {
 			if(!bindingResult.hasErrors()) {
 					this.artistaService.inserisci(artista);
 					model.addAttribute("artisti", this.artistaService.tutti());
-					return "/admin/artista/artistiTable.html";
+					return "admin/artista/artistiTable.html";
 			}
 			
-			return "/admin/artista/artistaForm.html";
+			return "admin/artista/artistaForm.html";
 			
 	}
 

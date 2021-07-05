@@ -31,7 +31,7 @@ public class CuratoreController {
 		
 			logger.debug("addCuratore");
 			model.addAttribute("curatore", new Curatore());
-			return "/admin/curatore/curatoreForm.html";
+			return "admin/curatore/curatoreForm.html";
 			
 	}
 	
@@ -39,7 +39,7 @@ public class CuratoreController {
 	public String getCuratori(Model model) {
 		
 		model.addAttribute("curatori", this.curatoreService.tutti());
-		return "/admin/curatore/curatori.html";
+		return "admin/curatore/curatori.html";
 		
 	}
 	
@@ -47,7 +47,7 @@ public class CuratoreController {
 	public String rimuoviCuratore (Model model) {
 		
 		model.addAttribute("curatori", this.curatoreService.tutti());
-		return "/admin/curatore/rimuoviCuratoreForm.html";
+		return "admin/curatore/rimuoviCuratoreForm.html";
 		
 	}
 	
@@ -61,9 +61,9 @@ public class CuratoreController {
 		
 		if(v) {
 			model.addAttribute("curatori",this.curatoreService.tutti());
-			return "/admin/curatore/curatori.html";
+			return "admin/curatore/curatori.html";
 		}
-		return "/admin/curatore/rimuoviCuratoreForm.html";
+		return "admin/curatore/rimuoviCuratoreForm.html";
 	}
 	
 	@RequestMapping(value = "/admin/curatore", method = RequestMethod.POST)
@@ -73,10 +73,10 @@ public class CuratoreController {
 			if(!bindingResult.hasErrors()) {
 					this.curatoreService.inserisci(curatore);
 					model.addAttribute("curatori", this.curatoreService.tutti());
-					return "/admin/curatore/curatori.html";
+					return "admin/curatore/curatori.html";
 			}
 			
-			return "/admin/curatore/curatoreForm.html";
+			return "admin/curatore/curatoreForm.html";
 			
 	}
 	
